@@ -1,0 +1,85 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+nav {
+  background-color: #007bff;
+  padding: 10px 0;
+  color: white;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+nav a:hover {
+  background-color: #0056b3;
+}
+
+/* Products Component Styles */
+.products-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f1f1f1;
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+}
+
+.product-item {
+  background: white;
+  margin: 10px 0;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-item h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.product-item p {
+  margin: 0;
+}
+
+/* AddProduct Component Styles */
+.add-product-form {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  width: 300px;
+}
+
+.add-product-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-product-form input,
+.add-product-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.add-product-form button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-product-form button:hover {
+  background-color: #0056b3;
+}

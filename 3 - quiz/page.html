@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            text-align: center;
+            width: 400px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #next {
+            margin-top: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="quiz">
+            <h2 id="question">Question text?</h2>
+            <div class="choices">
+                <button class="btn" onclick="selectAnswer(0)">Choice 1</button>
+                <button class="btn" onclick="selectAnswer(1)">Choice 2</button>
+                <button class="btn" onclick="selectAnswer(2)">Choice 3</button>
+                <button class="btn" onclick="selectAnswer(3)">Choice 4</button>
+            </div>
+            <button id="next" onclick="showNextQuestion()">Next</button>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script>
+        const quizQuestions = [
+            { question: "What is the capital of France?", choices: ["Paris", "London", "Rome", "Madrid"], answer: 0 },
+            { question: "What is 2 + 2?", choices: ["3", "4", "5", "6"], answer: 1 },
+            { question: "Who painted the Mona Lisa?", choices: ["Van Gogh", "Da Vinci", "Picasso", "Rembrandt"], answer: 1 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function showQuestion(questionIndex) {
+            const questionInfo = quizQuestions[questionIndex];
+            document.getElementById('question').textContent = questionInfo.question;
+            const choices = document.querySelectorAll('.btn');
+            choices.forEach((choice, index) => {
+                choice.textContent = questionInfo.choices[index];
+            });
+        }
+
+        function selectAnswer(choiceIndex) {
+            const questionInfo = quizQuestions[currentQuestionIndex];
+            if (choiceIndex === questionInfo.answer) {
+                score++;
+                document.getElementById('result').textContent = "Correct!";
+            } else {
+                document.getElementById('result').textContent = "Wrong!";
+            }
+        }
+
+        function showNextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                showQuestion(currentQuestionIndex);
+                document.getElementById('result').textContent = '';
+            } else {
+                document.getElementById('quiz').innerHTML = `<h2>Your final score is ${score}/${quizQuestions.length}</h2>`;
+            }
+        }
+
+        showQuestion(currentQuestionIndex);
+    </script>
+</body>
+</html>

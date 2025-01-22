@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Responsive Blog</h1>
+    </header>
+    <div id="main-content" class="main-content"></div>
+    <footer>
+        <p>Contact us at <a href="mailto:info@responsiveblog.com">info@responsiveblog.com</a></p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/posts')
+                .then(response => response.json())
+                .then(posts => {
+                    const mainContent = document.getElementById('main-content');
+                    posts.forEach(post => {
+                        const article = document.createElement('article');
+                        article.innerHTML = `<h2>${post.title}</h2><p>${post.description}</p>`;
+                        mainContent.appendChild(article);
+                    });
+                })
+                .catch(error => console.error('Error loading the posts:', error));
+        });
+    </script>
+</body>
+</html>
